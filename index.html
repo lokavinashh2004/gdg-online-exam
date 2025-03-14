@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDG Ambassador Selection Exam</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:,">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Start Page -->
+    <div class="container" id="start-container">
+        <img src="images/logo.webp" alt="GDG Logo">
+        <h1>GDG Ambassador Selection Exam</h1>
+        <p>Showcase your skills and become a GDG Ambassador! 🚀</p>
+        <form id="user-form">
+            <label>Name:</label>
+            <input type="text" id="name" required placeholder="Enter your name">
+            
+            <label>Department:</label>
+            <input type="text" id="department" required placeholder="Enter your department">
+            
+            <label>Year:</label>
+            <select id="year" required>
+                <option value="">Select Year</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+            </select>
+            
+            <button type="button" onclick="startQuiz()">Start Test</button>
+        </form>
+    </div>
+
+    <!-- Quiz Page -->
+    <div class="container" id="quiz-container" style="display: none;">
+        <p id="timer">Time Left: <span id="time">5400</span>s</p>
+        <h2 id="question">Loading...</h2>
+        <div id="options"></div>
+        <button id="next-btn" onclick="nextQuestion()">Next</button>
+    </div>
+
+    <!-- Result Page -->
+    <div class="container" id="result-container" style="display: none;">
+        <h2>Test Completed!</h2>
+        <p>Name: <span id="result-name"></span></p>
+        <p>Department: <span id="result-department"></span></p>
+        <p>Year: <span id="result-year"></span></p>
+        <p>Your Score: <span id="score"></span></p>
+        <button onclick="restartQuiz()"></button>
+    </div>
+
+    <!-- Firebase SDK (v8 for compatibility) -->
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  
+    <!-- Your script -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>

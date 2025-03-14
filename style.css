@@ -1,0 +1,356 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Background Styling for Start Page Only */
+body {
+    background: url('https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-goog/events/gd_gdg_lockup_vertical_color.png') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+            color: white;
+}
+
+/* Dark overlay for better visibility (Start Page Only) */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    z-index: -1;
+}
+
+/* Glassmorphism Card (Start Page Only) */
+#start-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    width: 600px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease-in-out;
+}
+
+#start-container:hover {
+    transform: scale(1.03);
+}
+
+#start-container img {
+    width: 150px;
+    margin-bottom: 15px;
+}
+
+#start-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+#start-container p {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 15px;
+}
+
+#start-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#start-container label {
+    font-size: 14px;
+    text-align: left;
+    font-weight: 500;
+}
+
+#start-container input,
+#start-container select {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: black;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+#start-container input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#start-container input:focus,
+#start-container select:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+#start-container button {
+    background: linear-gradient(90deg, #34A853, #4285F4);
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#start-container button:hover {
+    background: linear-gradient(90deg, #EA4335, #FBBC05);
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design for Start Page */
+@media screen and (max-width: 450px) {
+    #start-container {
+        width: 90%;
+    }
+}
+
+/* General Styles for Quiz and Result Containers */
+.container {
+    width: 50%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    color: black; /* Ensure text is visible */
+}
+
+/* Quiz Options Styling */
+#options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.option-btn {
+    width: 90%;
+    padding: 15px;
+    margin: 5px 0;
+    background: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.option-btn:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+.option-btn.selected {
+    background: #28a745 !important;
+    color: white;
+    border: 2px solid #1e7e34;
+}
+
+/* Timer */
+#timer {
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+    padding: 10px 20px;
+    background: rgba(255, 0, 0, 0.1); /* Light red background */
+    border: 2px solid red;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 10px auto;
+    box-shadow: 0 4px 6px rgba(255, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    left: 250px;
+}
+
+/* Hover Effect */
+#timer:hover {
+    background: rgba(255, 0, 0, 0.2); /* Darker red background on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 6px 12px rgba(255, 0, 0, 0.2);
+}
+
+/* Pulse Animation for Low Time */
+@keyframes pulseWarning {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4);
+    }
+    70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+    }
+}
+
+/* Apply Pulse Animation When Time is Low */
+#timer.low-time {
+    animation: pulseWarning 1.5s infinite;
+    background: rgba(255, 0, 0, 0.3); /* Darker background for urgency */
+    color: darkred; /* Darker text color for emphasis */
+}
+
+/* Glow Effect for Critical Time */
+@keyframes glowCritical {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    }
+    100% {
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+    }
+}
+
+/* Apply Glow Animation When Time is Critical */
+#timer.critical-time {
+    animation: glowCritical 1s infinite;
+    background: rgba(255, 0, 0, 0.4); /* Even darker background */
+    color: white; /* White text for better contrast */
+}
+
+#next-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #34A853, #4285F4); /* Gradient background */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover Effect */
+#next-btn:hover {
+    background: linear-gradient(90deg, #4285F4, #34A853); /* Reverse gradient on hover */
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+}
+
+/* Active Effect */
+#next-btn:active {
+    transform: translateY(0); /* Reset lift */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Reset shadow */
+}
+
+/* Ripple Effect */
+#next-btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 70%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+#next-btn:active::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    transition: transform 0s, opacity 0s;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(52, 168, 83, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(52, 168, 83, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(52, 168, 83, 0);
+    }
+}
+
+/* Add Pulse Animation on Hover */
+#next-btn:hover {
+    animation: pulse 1.5s infinite;
+}
+
+
+#result-container {
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    animation: fadeIn 0.5s ease-in-out; /* Fade-in animation */
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Heading Styles */
+#result-container h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #34A853; /* Green color for success */
+    margin-bottom: 20px;
+}
+
+/* Paragraph Styles */
+#result-container p {
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Score Styles */
+#result-container #score {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4285F4; /* Blue color for score */
+}
